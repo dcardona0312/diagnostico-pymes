@@ -13,6 +13,7 @@ function login() {
           if (data.rol === "admin") {
             document.getElementById("login").style.display = "none";
             document.getElementById("adminPanel").style.display = "block";
+            cargarUsuarios();
           } else {
             document.getElementById("login").style.display = "none";
             document.getElementById("empresa").style.display = "block";
@@ -24,9 +25,14 @@ function login() {
 }
 
 // CREAR USUARIO (ADMIN)
-function crearUsuario() {
-  const email = prompt("Correo:");
-  const pass = prompt("Contraseña:");
+function crearUsuarioAdmin() {
+  const email = document.getElementById("newEmail").value;
+  const pass = document.getElementById("newPassword").value;
+
+  if (!email || !pass) {
+    alert("Completa todos los campos");
+    return;
+  }
 
   auth.createUserWithEmailAndPassword(email, pass)
     .then(user => {
@@ -37,8 +43,29 @@ function crearUsuario() {
       });
 
     })
-    .then(() => alert("Usuario creado"))
+    .then(() => {
+      alert("Usuario creado. Debes volver a iniciar sesión como admin");
+      logout();
+    })
     .catch(err => alert(err.message));
+}
+
+// LISTAR USUARIOS
+function cargarUsuarios() {
+  const lista = document.getElementById("listaUsuarios");
+  lista.innerHTML = "";
+
+  db.collection("usuarios").get()
+    .then(snapshot => {
+      snapshot.forEach(doc => {
+        const data = doc.data();
+
+        let li = document.createElement("li");
+        li.textContent = data.email + " - " + data.rol;
+
+        lista.appendChild(li);
+      });
+    });
 }
 
 // GUARDAR EMPRESA

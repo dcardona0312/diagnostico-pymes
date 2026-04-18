@@ -21,7 +21,17 @@
   <!-- PANEL ADMIN -->
   <div id="adminPanel" class="card" style="display:none;">
     <h1>Panel Admin</h1>
-    <button onclick="crearUsuario()">Crear Usuario Empresa</button>
+
+    <h2>Crear Usuario Empresa</h2>
+    <input type="text" id="newEmail" placeholder="Correo">
+    <input type="password" id="newPassword" placeholder="Contraseña">
+    <button onclick="crearUsuarioAdmin()">Crear Usuario</button>
+
+    <hr>
+
+    <h2>Usuarios</h2>
+    <ul id="listaUsuarios"></ul>
+
     <button onclick="logout()">Cerrar sesión</button>
   </div>
 

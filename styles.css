@@ -20,7 +20,7 @@ body {
   text-align: center;
 }
 
-h1 {
+h1, h2, h3 {
   color: white;
 }
 
@@ -40,8 +40,18 @@ button {
   color: white;
   border: none;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2563eb;
 }
 
 .section {
   margin-top: 15px;
+}
+
+ul {
+  text-align: left;
+  color: white;
 }
