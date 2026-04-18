@@ -1,10 +1,9 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
+  font-family: Arial;
+  background: #0f172a;
 }
 
-/* Contenedor */
 .container {
   display: flex;
   justify-content: center;
@@ -12,86 +11,37 @@ body {
   height: 100vh;
 }
 
-/* Tarjetas */
+/* Card */
 .card {
-  background: rgba(30, 41, 59, 0.95);
-  padding: 30px;
-  border-radius: 20px;
-  width: 400px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 15px;
+  width: 350px;
   text-align: center;
 }
 
-/* Títulos */
 h1 {
-  color: #f1f5f9;
+  color: white;
 }
 
-.subtitle {
-  color: #94a3b8;
-}
-
-/* Inputs */
 input, select {
   width: 100%;
+  margin-top: 10px;
   padding: 10px;
-  margin-top: 8px;
   border-radius: 8px;
   border: none;
-  background: #334155;
-  color: white;
 }
 
-/* Secciones */
-.section {
-  margin-top: 20px;
-  text-align: left;
-}
-
-.section h3 {
-  color: #cbd5f5;
-  margin-bottom: 10px;
-}
-
-/* Campos */
-.field {
-  margin-bottom: 12px;
-}
-
-label {
-  display: block;
-  font-size: 13px;
-  color: #94a3b8;
-  margin-bottom: 5px;
-}
-
-/* Botones */
 button {
+  margin-top: 15px;
+  padding: 10px;
   width: 100%;
-  padding: 12px;
-  margin-top: 20px;
-  border-radius: 10px;
-  border: none;
-  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  background: #3b82f6;
   color: white;
-  font-weight: bold;
-  cursor: pointer;
+  border: none;
+  border-radius: 10px;
 }
 
-button:hover {
-  transform: scale(1.05);
-}
-
-/* Resultado */
-#resultado {
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #22c55e;
-}
-
-/* Scroll del cuestionario */
-#cuestionario {
-  max-height: 90vh;
-  overflow-y: auto;
+.section {
+  margin-top: 15px;
 }
