@@ -22,7 +22,7 @@
   <div id="adminPanel" class="card" style="display:none;">
     <h1>Panel Admin</h1>
 
-    <h2>Crear Usuario Empresa</h2>
+    <h2>Crear Usuario</h2>
     <input type="text" id="newEmail" placeholder="Correo">
     <input type="password" id="newPassword" placeholder="Contraseña">
     <button onclick="crearUsuarioAdmin()">Crear Usuario</button>
@@ -35,48 +35,17 @@
     <button onclick="logout()">Cerrar sesión</button>
   </div>
 
-  <!-- EMPRESA -->
-  <div id="empresa" class="card" style="display:none;">
-    <h1>Datos Empresa</h1>
-    <input type="text" id="nombreEmpresa" placeholder="Nombre empresa">
-    <input type="text" id="nitEmpresa" placeholder="NIT">
-    <button onclick="guardarEmpresa()">Continuar</button>
-  </div>
-
-  <!-- CUESTIONARIO -->
-  <div id="cuestionario" class="card" style="display:none;">
-    <h1>Auditoría Empresarial</h1>
-
-    <div class="section">
-      <h3>🏭 Operaciones</h3>
-      <select id="op1"><option value="">Procesos documentados</option><option value="1">Sí</option><option value="0">No</option></select>
-      <select id="op2"><option value="">Control inventarios</option><option value="1">Sí</option><option value="0">No</option></select>
-    </div>
-
-    <div class="section">
-      <h3>💰 Finanzas</h3>
-      <select id="fin1"><option value="">Registro ingresos</option><option value="1">Sí</option><option value="0">No</option></select>
-      <select id="fin2"><option value="">Flujo caja</option><option value="1">Sí</option><option value="0">No</option></select>
-    </div>
-
-    <button onclick="analizar()">Analizar</button>
-  </div>
-
-  <!-- RESULTADO -->
-  <div id="app" class="card" style="display:none;">
-    <h1>Resultado</h1>
-    <div id="resultado"></div>
-    <button onclick="logout()">Salir</button>
-  </div>
-
 </div>
 
-<!-- Firebase -->
+<!-- FIREBASE (VERSIÓN COMPATIBLE) -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
+<!-- CONFIG -->
 <script src="firebase.js"></script>
+
+<!-- LÓGICA -->
 <script src="script.js"></script>
 
 </body>

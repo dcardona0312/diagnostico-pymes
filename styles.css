@@ -11,7 +11,6 @@ body {
   height: 100vh;
 }
 
-/* Card */
 .card {
   background: #1e293b;
   padding: 25px;
@@ -20,11 +19,11 @@ body {
   text-align: center;
 }
 
-h1, h2, h3 {
+h1, h2 {
   color: white;
 }
 
-input, select {
+input {
   width: 100%;
   margin-top: 10px;
   padding: 10px;
@@ -41,17 +40,4 @@ button {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-}
-
-button:hover {
-  background: #2563eb;
-}
-
-.section {
-  margin-top: 15px;
-}
-
-ul {
-  text-align: left;
-  color: white;
 }
