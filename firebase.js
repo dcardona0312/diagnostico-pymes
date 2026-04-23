@@ -1,4 +1,4 @@
-// CONFIG REAL (la tuya)
+// CONFIG REAL
 const firebaseConfig = {
   apiKey: "AIzaSyCavRPIHaJ4R_jScWoPRyv8pEuoPIonvP0",
   authDomain: "diagnostico-pymes-2e83d.firebaseapp.com",
@@ -8,9 +8,11 @@ const firebaseConfig = {
   appId: "1:918351696404:web:deb958cbe4351e51968d01"
 };
 
-// INICIALIZAR (FORMA V8)
+// INICIALIZAR FIREBASE
 firebase.initializeApp(firebaseConfig);
 
-// 👇 ESTO ES LO IMPORTANTE
+// VARIABLES GLOBALES (IMPORTANTÍSIMO)
 const auth = firebase.auth();
 const db = firebase.firestore();
+
+console.log("🔥 Firebase listo");
