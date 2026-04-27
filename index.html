@@ -1,7 +1,10 @@
+<!-- index.html COMPLETO CORREGIDO -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CyberPyme</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -10,11 +13,11 @@
 
 <div class="container">
 
-  <!-- LADO IZQUIERDO -->
+  <!-- PANEL IZQUIERDO -->
   <div class="info">
 
     <div class="logo-container">
-      <img src="LogoCyberpyme.png" class="logo">
+      <img src="LogoCyberpyme.png" class="logo" alt="CyberPyme">
     </div>
 
     <p class="subtitle">
@@ -53,14 +56,14 @@
   </div>
 
   <!-- LOGIN -->
-  <div class="login-card" id="loginCard">
+  <div class="login-card">
 
     <div class="login-content">
-      
+
       <h2>Acceso al sistema</h2>
       <p class="login-sub">Ingresa tus credenciales para continuar</p>
 
-      <input id="usuario" placeholder="Correo">
+      <input id="usuario" type="email" placeholder="Correo">
       <input id="password" type="password" placeholder="Contraseña">
 
       <button onclick="login()">Iniciar sesión</button>
@@ -71,93 +74,13 @@
 
 </div>
 
-<!-- DASHBOARD -->
-<div id="dashboard" style="display:none; padding:40px;">
-
-  <h2>Bienvenido 👋</h2>
-  <p>Este será tu panel de diagnóstico de ciberseguridad.</p>
-
-  <button onclick="logout()">Cerrar sesión</button>
-
-</div>
-
 <!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-
-<script src="firebase.js"></script>
-<script src="script.js"></script>
-
-</body><!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>CyberPyme</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-
-<div class="container">
-
-  <!-- LADO IZQUIERDO -->
-  <div class="info">
-
-    <div class="logo-container">
-      <img src="LogoCyberpyme.png" class="logo">
-    </div>
-
-    <p class="subtitle">
-      Soluciones especializadas en ciberseguridad para pequeñas y medianas empresas tecnológicas.
-    </p>
-
-    <div class="services">
-      <div class="service">
-        <h3>Auditoría de seguridad</h3>
-        <p>Evaluación de vulnerabilidades.</p>
-      </div>
-
-      <div class="service">
-        <h3>Protección de sistemas</h3>
-        <p>Implementación de controles.</p>
-      </div>
-
-      <div class="service">
-        <h3>Seguridad de red</h3>
-        <p>Protección de accesos.</p>
-      </div>
-
-      <div class="service">
-        <h3>Gestión de información</h3>
-        <p>Protección de datos.</p>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- LOGIN -->
-  <div class="login-card">
-    <div class="login-content">
-      
-      <h2>Acceso</h2>
-
-      <input id="usuario" placeholder="Correo">
-      <input id="password" type="password" placeholder="Contraseña">
-
-      <button onclick="login()">Ingresar</button>
-
-    </div>
-  </div>
-
-</div>
-
-<!-- FIREBASE -->
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
 <script src="firebase.js"></script>
 <script src="script.js"></script>
 
 </body>
-</html>
 </html>

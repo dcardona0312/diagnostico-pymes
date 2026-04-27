@@ -1,42 +1,112 @@
+<!-- preguntas.html COMPLETO NUEVO -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Diagnóstico de Ciberseguridad</title>
-  <link rel="stylesheet" href="preguntas.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico CyberPyme</title>
+<link rel="stylesheet" href="preguntas.css">
 </head>
 
 <body>
 
-<div class="container">
+<!-- HEADER -->
+<header class="topbar">
 
-  <h1>Diagnóstico de Ciberseguridad</h1>
+  <div class="brand">
+    <img src="../LogoCyberpyme.png" class="logo">
+    <div>
+      <h2>CyberPyme</h2>
+      <span>Diagnóstico Empresarial</span>
+    </div>
+  </div>
 
-  <form id="formulario">
+  <button onclick="logout()" class="logout-btn">Cerrar sesión</button>
 
-    <label>¿Usa antivirus actualizado?</label>
-    <select id="p1">
-      <option value="1">Sí</option>
-      <option value="0">No</option>
-    </select>
+</header>
 
-    <label>¿Realiza copias de seguridad?</label>
-    <select id="p2">
-      <option value="1">Sí</option>
-      <option value="0">No</option>
-    </select>
+<!-- CONTENIDO -->
+<main class="main">
 
-    <label>¿Tiene firewall configurado?</label>
-    <select id="p3">
-      <option value="1">Sí</option>
-      <option value="0">No</option>
-    </select>
+  <div class="wrapper">
 
-    <button type="button" onclick="guardar()">Enviar diagnóstico</button>
+    <!-- PANEL INFO -->
+    <section class="intro-card">
 
-  </form>
+      <h1>Encuesta de Ciberseguridad</h1>
 
-</div>
+      <p>
+        Completa este formulario para medir el nivel de protección digital de tu empresa.
+      </p>
+
+      <div class="tips">
+
+        <div class="tip">
+          <h3>Antivirus</h3>
+          <span>Protección contra malware.</span>
+        </div>
+
+        <div class="tip">
+          <h3>Backups</h3>
+          <span>Recuperación de información.</span>
+        </div>
+
+        <div class="tip">
+          <h3>Firewall</h3>
+          <span>Control de accesos externos.</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FORMULARIO -->
+    <section class="form-card">
+
+      <h2>Responder encuesta</h2>
+
+      <div class="questions-box">
+
+        <div class="question">
+          <label>¿Usa antivirus actualizado?</label>
+
+          <select id="p1">
+            <option value="1">Sí</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label>¿Realiza copias de seguridad?</label>
+
+          <select id="p2">
+            <option value="1">Sí</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label>¿Tiene firewall configurado?</label>
+
+          <select id="p3">
+            <option value="1">Sí</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+
+      </div>
+
+      <button onclick="guardar()" class="send-btn">
+        Enviar diagnóstico
+      </button>
+
+    </section>
+
+  </div>
+
+</main>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>

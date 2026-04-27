@@ -1,4 +1,5 @@
-// 🔐 VALIDAR SESIÓN
+// dashboard.js COMPLETO
+
 auth.onAuthStateChanged(user => {
 
   if (!user) {
@@ -6,110 +7,129 @@ auth.onAuthStateChanged(user => {
     return;
   }
 
-  document.getElementById("titulo").innerText = "Bienvenido Admin";
-
+  cargarResumen();
   cargarHistorial();
+
 });
 
 
-// 🧑‍💼 CREAR USUARIO
+/* CREAR EMPRESA */
 function crearUsuario() {
 
-  const email = document.getElementById("newEmail").value;
-  const password = document.getElementById("newPassword").value;
+  const nombre = document.getElementById("newNombre").value.trim();
+  const email = document.getElementById("newEmail").value.trim();
+  const password = document.getElementById("newPassword").value.trim();
 
-  if (!email || !password) {
-    alert("Completa los campos");
+  if (nombre === "" || email === "" || password === "") {
+    alert("Completa todos los campos");
     return;
   }
 
   auth.createUserWithEmailAndPassword(email, password)
+
     .then(res => {
 
       return db.collection("usuarios").doc(res.user.uid).set({
+        nombre: nombre,
         email: email,
-        rol: "empresa"
+        rol: "empresa",
+        fecha: new Date()
       });
 
     })
-    .then(() => alert("Usuario creado"))
-    .catch(e => alert(e.message));
+
+    .then(() => {
+
+      alert("Empresa creada correctamente");
+
+      document.getElementById("newNombre").value = "";
+      document.getElementById("newEmail").value = "";
+      document.getElementById("newPassword").value = "";
+
+      cargarResumen();
+
+    })
+
+    .catch(error => {
+      alert(error.message);
+    });
+
 }
 
 
-// 📊 HISTORIAL + GRAFICA
+/* RESUMEN */
+function cargarResumen() {
+
+  db.collection("usuarios")
+    .where("rol", "==", "empresa")
+    .get()
+    .then(snapshot => {
+      document.getElementById("totalEmpresas").textContent = snapshot.size;
+    });
+
+  db.collection("diagnosticos")
+    .get()
+    .then(snapshot => {
+      document.getElementById("totalDiag").textContent = snapshot.size;
+    });
+
+}
+
+
+/* HISTORIAL */
 function cargarHistorial() {
 
   const tabla = document.getElementById("historial");
   tabla.innerHTML = "";
 
-  let labels = [];
-  let datos = [];
+  db.collection("diagnosticos")
+    .orderBy("fecha", "desc")
+    .get()
 
-  db.collection("diagnosticos").get()
     .then(snapshot => {
+
+      if (snapshot.empty) {
+
+        tabla.innerHTML = `
+          <tr>
+            <td colspan="3">No hay diagnósticos registrados</td>
+          </tr>
+        `;
+
+        return;
+      }
 
       snapshot.forEach(doc => {
 
         const data = doc.data();
 
-        const usuario = data.usuario || "Empresa";
-        const puntaje = data.puntaje ?? 0;
+        let fechaTexto = "Sin fecha";
 
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${usuario}</td>
-          <td>${puntaje}</td>
+        if (data.fecha && data.fecha.toDate) {
+          fechaTexto = data.fecha.toDate().toLocaleDateString();
+        }
+
+        tabla.innerHTML += `
+          <tr>
+            <td>${data.usuario || "Sin nombre"}</td>
+            <td>${data.puntaje || 0}</td>
+            <td>${fechaTexto}</td>
+          </tr>
         `;
-        tabla.appendChild(row);
 
-        labels.push(usuario);
-        datos.push(puntaje);
       });
 
-      crearGrafica(labels, datos);
-
     });
+
 }
 
 
-// 🥧 GRAFICA TORTA
-function crearGrafica(labels, datos) {
-
-  const ctx = document.getElementById("grafica").getContext("2d");
-
-  new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: labels,
-      datasets: [{
-        data: datos,
-        backgroundColor: [
-          '#1d4ed8',
-          '#2563eb',
-          '#3b82f6',
-          '#60a5fa',
-          '#93c5fd',
-          '#0ea5e9'
-        ]
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          position: 'bottom'
-        }
-      }
-    }
-  });
-}
-
-
-// 🚪 LOGOUT
+/* LOGOUT */
 function logout() {
-  auth.signOut().then(() => {
-    window.location.href = "../index.html";
-  });
+
+  auth.signOut()
+    .then(() => {
+      window.location.href = "../index.html";
+    });
+
 }

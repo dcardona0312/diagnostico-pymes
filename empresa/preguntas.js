@@ -1,11 +1,16 @@
+// preguntas.js COMPLETO
+
 auth.onAuthStateChanged(user => {
 
   if (!user) {
     window.location.href = "../index.html";
+    return;
   }
 
 });
 
+
+/* GUARDAR DIAGNOSTICO */
 function guardar() {
 
   const p1 = parseInt(document.getElementById("p1").value);
@@ -14,17 +19,45 @@ function guardar() {
 
   const puntaje = p1 + p2 + p3;
 
-  const usuario = auth.currentUser.email;
+  const uid = auth.currentUser.uid;
 
-  db.collection("diagnosticos").add({
-    usuario: usuario,
-    puntaje: puntaje,
-    fecha: new Date()
-  })
-  .then(() => {
-    alert("Diagnóstico guardado");
-  })
-  .catch(err => {
-    alert(err.message);
-  });
+  db.collection("usuarios").doc(uid).get()
+
+    .then(doc => {
+
+      let empresa = auth.currentUser.email;
+
+      if (doc.exists) {
+        empresa = doc.data().nombre;
+      }
+
+      return db.collection("diagnosticos").add({
+        uid: uid,
+        usuario: empresa,
+        correo: auth.currentUser.email,
+        puntaje: puntaje,
+        fecha: new Date()
+      });
+
+    })
+
+    .then(() => {
+      alert("Diagnóstico enviado correctamente");
+    })
+
+    .catch(error => {
+      alert(error.message);
+    });
+
+}
+
+
+/* CERRAR SESION */
+function logout() {
+
+  auth.signOut()
+    .then(() => {
+      window.location.href = "../index.html";
+    });
+
 }
