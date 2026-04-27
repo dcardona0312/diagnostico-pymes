@@ -1,5 +1,6 @@
-/* preguntas.css COMPLETO RESPONSIVO */
+/* preguntas.css COMPLETO */
 
+/* RESET */
 *{
   margin:0;
   padding:0;
@@ -12,14 +13,16 @@ body{
   color:#0f172a;
 }
 
-/* TOPBAR */
+/* HEADER */
 .topbar{
-  background:white;
+  background:#ffffff;
+  border-bottom:1px solid #e2e8f0;
   padding:18px 35px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid #e2e8f0;
+  gap:20px;
+  flex-wrap:wrap;
 }
 
 .brand{
@@ -30,10 +33,12 @@ body{
 
 .logo{
   width:70px;
+  height:auto;
 }
 
 .brand h2{
-  font-size:22px;
+  font-size:24px;
+  margin-bottom:4px;
 }
 
 .brand span{
@@ -47,8 +52,13 @@ body{
   color:white;
   padding:12px 18px;
   border-radius:10px;
+  font-weight:700;
   cursor:pointer;
-  font-weight:600;
+  transition:.2s;
+}
+
+.logout-btn:hover{
+  background:#dc2626;
 }
 
 /* MAIN */
@@ -56,17 +66,19 @@ body{
   padding:35px;
 }
 
+/* WRAPPER PRINCIPAL */
 .wrapper{
-  max-width:1200px;
-  margin:auto;
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:1fr 1.2fr;
   gap:25px;
+  max-width:1400px;
+  margin:auto;
 }
 
 /* TARJETAS */
 .intro-card,
-.form-card{
+.form-card,
+.premium-section{
   background:white;
   border-radius:18px;
   padding:30px;
@@ -80,54 +92,72 @@ body{
 }
 
 .intro-card p{
-  color:#64748b;
-  line-height:1.6;
+  color:#475569;
+  line-height:1.7;
   margin-bottom:25px;
 }
 
+/* TIPS */
 .tips{
   display:grid;
-  gap:15px;
+  gap:16px;
 }
 
 .tip{
   background:#f8fafc;
   border:1px solid #e2e8f0;
-  border-radius:12px;
+  border-radius:14px;
   padding:18px;
 }
 
 .tip h3{
+  font-size:18px;
   margin-bottom:6px;
 }
 
 .tip span{
-  color:#64748b;
   font-size:14px;
+  color:#64748b;
 }
 
 /* FORM */
 .form-card h2{
-  margin-bottom:25px;
+  font-size:28px;
+  margin-bottom:20px;
 }
 
 .questions-box{
-  display:flex;
-  flex-direction:column;
-  gap:18px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+  max-height:900px;
+  overflow:auto;
+  padding-right:5px;
 }
 
+/* SCROLL */
+.questions-box::-webkit-scrollbar{
+  width:8px;
+}
+
+.questions-box::-webkit-scrollbar-thumb{
+  background:#cbd5e1;
+  border-radius:20px;
+}
+
+/* QUESTION */
 .question{
   background:#f8fafc;
   border:1px solid #e2e8f0;
-  border-radius:12px;
+  border-radius:14px;
   padding:18px;
 }
 
 .question label{
   display:block;
-  margin-bottom:10px;
   font-weight:600;
+  margin-bottom:10px;
+  line-height:1.5;
 }
 
 select{
@@ -137,23 +167,86 @@ select{
   border-radius:10px;
   background:white;
   font-size:15px;
+  color:#0f172a;
 }
 
-/* BOTON */
-.send-btn{
+/* BOTONES */
+.send-btn,
+.premium-btn{
   width:100%;
-  margin-top:25px;
   border:none;
   padding:15px;
   border-radius:12px;
-  background:linear-gradient(90deg,#2563eb,#3b82f6);
   color:white;
   font-weight:700;
   cursor:pointer;
+  transition:.2s;
+}
+
+.send-btn{
+  margin-top:22px;
+  background:linear-gradient(90deg,#2563eb,#3b82f6);
+}
+
+.send-btn:hover{
+  transform:translateY(-2px);
+}
+
+.premium-btn{
+  margin-top:25px;
+  background:linear-gradient(90deg,#7c3aed,#9333ea);
+}
+
+.premium-btn:hover{
+  transform:translateY(-2px);
+}
+
+/* PREMIUM */
+.premium-section{
+  max-width:1400px;
+  margin:30px auto 0;
+}
+
+.premium-section h2{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.premium-section p{
+  color:#64748b;
+  margin-bottom:25px;
+}
+
+.premium-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.premium-card{
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+  border-radius:14px;
+  padding:20px;
+  transition:.2s;
+}
+
+.premium-card:hover{
+  transform:translateY(-4px);
+}
+
+.premium-card h3{
+  font-size:17px;
+  margin-bottom:12px;
+}
+
+.premium-card span{
+  color:#7c3aed;
+  font-weight:700;
 }
 
 /* RESPONSIVE */
-@media(max-width:950px){
+@media(max-width:1100px){
 
   .wrapper{
     grid-template-columns:1fr;
@@ -161,13 +254,12 @@ select{
 
 }
 
-@media(max-width:650px){
+@media(max-width:700px){
 
   .topbar{
-    flex-direction:column;
-    gap:15px;
-    align-items:flex-start;
     padding:20px;
+    flex-direction:column;
+    align-items:flex-start;
   }
 
   .main{
@@ -176,6 +268,11 @@ select{
 
   .intro-card h1{
     font-size:28px;
+  }
+
+  .form-card h2,
+  .premium-section h2{
+    font-size:24px;
   }
 
 }
