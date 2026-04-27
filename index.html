@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Diagnóstico Pymes</title>
+  <title>CyberPyme</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -10,95 +10,154 @@
 
 <div class="container">
 
+  <!-- LADO IZQUIERDO -->
+  <div class="info">
+
+    <div class="logo-container">
+      <img src="LogoCyberpyme.png" class="logo">
+    </div>
+
+    <p class="subtitle">
+      Soluciones especializadas en ciberseguridad para pequeñas y medianas empresas tecnológicas.
+    </p>
+
+    <div class="services">
+
+      <div class="service">
+        <h3>Auditoría de seguridad</h3>
+        <p>Evaluación integral de vulnerabilidades en infraestructura, sistemas y accesos.</p>
+      </div>
+
+      <div class="service">
+        <h3>Protección de sistemas</h3>
+        <p>Implementación de controles de seguridad y buenas prácticas.</p>
+      </div>
+
+      <div class="service">
+        <h3>Seguridad de red</h3>
+        <p>Revisión y fortalecimiento de redes y accesos remotos.</p>
+      </div>
+
+      <div class="service">
+        <h3>Gestión de información</h3>
+        <p>Protección de datos mediante cifrado y control de acceso.</p>
+      </div>
+
+      <div class="service">
+        <h3>Respuesta a incidentes</h3>
+        <p>Protocolos de acción ante ataques o fallos de seguridad.</p>
+      </div>
+
+    </div>
+
+  </div>
+
   <!-- LOGIN -->
-  <div id="login" class="card">
-    <h1>Diagnóstico Pymes</h1>
-    <input type="text" id="usuario" placeholder="Correo">
-    <input type="password" id="password" placeholder="Contraseña">
-    <button onclick="login()">Ingresar</button>
-  </div>
+  <div class="login-card" id="loginCard">
 
-  <!-- PANEL ADMIN -->
-  <div id="adminPanel" class="card" style="display:none;">
-    <h1>Panel Admin</h1>
+    <div class="login-content">
+      
+      <h2>Acceso al sistema</h2>
+      <p class="login-sub">Ingresa tus credenciales para continuar</p>
 
-    <h2>Crear Usuario</h2>
-    <input type="text" id="newEmail" placeholder="Correo">
-    <input type="password" id="newPassword" placeholder="Contraseña">
+      <input id="usuario" placeholder="Correo">
+      <input id="password" type="password" placeholder="Contraseña">
 
-    <select id="newRol">
-      <option value="empresa">Empresa</option>
-      <option value="admin">Admin</option>
-    </select>
+      <button onclick="login()">Iniciar sesión</button>
 
-    <button onclick="crearUsuarioAdmin()">Crear Usuario</button>
+    </div>
 
-    <hr>
-
-    <h2>Usuarios</h2>
-    <ul id="listaUsuarios"></ul>
-
-    <button onclick="logout()">Cerrar sesión</button>
-  </div>
-
-  <!-- PANEL EMPRESA -->
-  <div id="empresaPanel" class="card" style="display:none;">
-    <h1>Diagnóstico Empresarial</h1>
-
-    <input type="text" id="nombreEmpresa" placeholder="Nombre de la empresa">
-    <input type="text" id="nitEmpresa" placeholder="NIT">
-
-    <h2>Cuestionario</h2>
-
-    <label>¿Cuántos empleados tiene?</label>
-    <select id="empleados">
-      <option>1-10</option>
-      <option>11-50</option>
-      <option>51-200</option>
-      <option>200+</option>
-    </select>
-
-    <label>¿Tiene página web?</label>
-    <select id="web">
-      <option>Si</option>
-      <option>No</option>
-    </select>
-
-    <label>¿Usa herramientas digitales?</label>
-    <select id="digital">
-      <option>Si</option>
-      <option>No</option>
-    </select>
-
-    <label>¿Tiene procesos documentados?</label>
-    <select id="procesos">
-      <option>Si</option>
-      <option>No</option>
-    </select>
-
-    <label>¿Realiza análisis financiero?</label>
-    <select id="finanzas">
-      <option>Si</option>
-      <option>No</option>
-    </select>
-
-    <button onclick="guardarDiagnostico()">Guardar Diagnóstico</button>
-
-    <button onclick="logout()">Cerrar sesión</button>
   </div>
 
 </div>
 
-<!-- 🔥 FIREBASE (OBLIGATORIO Y EN ESTE ORDEN) -->
+<!-- DASHBOARD -->
+<div id="dashboard" style="display:none; padding:40px;">
+
+  <h2>Bienvenido 👋</h2>
+  <p>Este será tu panel de diagnóstico de ciberseguridad.</p>
+
+  <button onclick="logout()">Cerrar sesión</button>
+
+</div>
+
+<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
-<!-- 🔥 TU CONFIG -->
 <script src="firebase.js"></script>
+<script src="script.js"></script>
 
-<!-- 🔥 TU LÓGICA -->
+</body><!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>CyberPyme</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- LADO IZQUIERDO -->
+  <div class="info">
+
+    <div class="logo-container">
+      <img src="LogoCyberpyme.png" class="logo">
+    </div>
+
+    <p class="subtitle">
+      Soluciones especializadas en ciberseguridad para pequeñas y medianas empresas tecnológicas.
+    </p>
+
+    <div class="services">
+      <div class="service">
+        <h3>Auditoría de seguridad</h3>
+        <p>Evaluación de vulnerabilidades.</p>
+      </div>
+
+      <div class="service">
+        <h3>Protección de sistemas</h3>
+        <p>Implementación de controles.</p>
+      </div>
+
+      <div class="service">
+        <h3>Seguridad de red</h3>
+        <p>Protección de accesos.</p>
+      </div>
+
+      <div class="service">
+        <h3>Gestión de información</h3>
+        <p>Protección de datos.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LOGIN -->
+  <div class="login-card">
+    <div class="login-content">
+      
+      <h2>Acceso</h2>
+
+      <input id="usuario" placeholder="Correo">
+      <input id="password" type="password" placeholder="Contraseña">
+
+      <button onclick="login()">Ingresar</button>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+<script src="firebase.js"></script>
 <script src="script.js"></script>
 
 </body>
+</html>
 </html>

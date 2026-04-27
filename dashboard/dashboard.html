@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - CyberPyme</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div>
+      <div class="logo-box">
+        <img src="../LogoCyberpyme.png" class="logo">
+      </div>
+
+      <h2>CyberPyme</h2>
+      <p>Panel Administrador</p>
+    </div>
+
+    <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
+
+  </aside>
+
+  <!-- CONTENIDO -->
+  <main class="content">
+
+    <h1 id="titulo"></h1>
+
+    <div class="grid">
+
+      <!-- CREAR EMPRESA (ARREGLADO) -->
+      <div class="card form-card">
+        <h3>Crear empresa</h3>
+
+        <input id="newEmail" placeholder="Correo">
+        <input id="newPassword" type="password" placeholder="Contraseña">
+
+        <button onclick="crearUsuario()">Crear usuario</button>
+      </div>
+
+      <!-- HISTORIAL -->
+      <div class="card">
+        <h3>Historial</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Empresa</th>
+              <th>Puntaje</th>
+            </tr>
+          </thead>
+          <tbody id="historial"></tbody>
+        </table>
+      </div>
+
+      <!-- GRAFICA -->
+      <div class="card full">
+        <h3>Resultados de empresas</h3>
+        <canvas id="grafica"></canvas>
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<!-- Chart -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="../firebase.js"></script>
+<script src="dashboard.js"></script>
+
+</body>
+</html>

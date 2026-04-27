@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* LAYOUT */
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* SIDEBAR BLANCA */
+.sidebar {
+  width: 260px;
+  background: white;
+  color: #1e293b;
+  padding: 30px;
+  border-right: 1px solid #e2e8f0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.logo-box {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.logo {
+  width: 280px;
+}
+
+/* TEXTOS */
+.sidebar h2 {
+  text-align: center;
+  color: #2563eb;
+}
+
+.sidebar p {
+  text-align: center;
+  font-size: 13px;
+  margin-bottom: 25px;
+  color: #64748b;
+}
+
+/* BOTÓN VERDE */
+.logout-btn {
+  background: #16a34a;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* CONTENIDO AZUL */
+.content {
+  flex: 1;
+  padding: 40px;
+  background: #0f172a;
+  color: white;
+}
+
+/* GRID NORMAL (SIN TOCAR PROPORCIONES) */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+/* TARJETAS */
+.card {
+  background: white;
+  color: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+/* INPUTS */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+}
+
+/* BOTONES */
+button {
+  background: #2563eb;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* TABLA */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th {
+  text-align: left;
+  color: #2563eb;
+}
+
+td {
+  padding: 10px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* GRAFICA */
+.card canvas {
+  width: 100% !important;
+  height: 300px !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
