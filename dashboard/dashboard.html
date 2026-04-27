@@ -25,17 +25,15 @@
       <h2>CyberPyme</h2>
       <p>Panel Administrativo</p>
 
-      <div class="menu-box">
-        <div class="menu-item active">Empresas</div>
-        <div class="menu-item">Historial</div>
-        <div class="menu-item">Reportes</div>
-      </div>
-
     </div>
 
-    <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
+    <button onclick="logout()" class="logout-btn">
+      Cerrar sesión
+    </button>
 
   </aside>
+
+
 
   <!-- CONTENIDO -->
   <main class="content">
@@ -60,7 +58,8 @@
 
       </div>
 
-      <!-- ESTADISTICAS -->
+
+      <!-- RESUMEN -->
       <div class="card stats">
 
         <div class="stat-box">
@@ -75,6 +74,7 @@
 
       </div>
 
+
       <!-- HISTORIAL -->
       <div class="card full">
 
@@ -84,13 +84,61 @@
           <thead>
             <tr>
               <th>Empresa</th>
-              <th>Puntaje</th>
+              <th>Nivel</th>
+              <th>Total</th>
               <th>Fecha</th>
+              <th>Acción</th>
             </tr>
           </thead>
 
           <tbody id="historial"></tbody>
         </table>
+
+      </div>
+
+
+      <!-- DETALLE -->
+      <div class="card full detalle-card">
+
+        <div class="detalle-header">
+
+          <div>
+            <h3>Detalle del Diagnóstico</h3>
+            <p>Análisis técnico del resultado seleccionado</p>
+          </div>
+
+          <span class="badge-detalle" id="estadoDetalle">
+            Sin seleccionar
+          </span>
+
+        </div>
+
+
+        <div class="detalle-grid">
+
+          <!-- GRAFICA -->
+          <div class="detalle-panel grafica-panel">
+            <canvas id="detalleGrafica"></canvas>
+          </div>
+
+          <!-- INFO -->
+          <div class="detalle-panel info-panel">
+
+            <div id="detalleInfo" class="detalle-info">
+
+              <div class="empty-state">
+                <h4>Selecciona un diagnóstico</h4>
+                <p>
+                  Haz clic en <strong>Ver más</strong> dentro del historial para
+                  visualizar el detalle completo del resultado.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
@@ -103,6 +151,8 @@
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script src="../firebase.js"></script>
 <script src="dashboard.js"></script>
